@@ -59,6 +59,10 @@ function wordpoints_points_logs_regenerator_regenerate() {
  */
 function worpdoints_points_logs_regenerator_form() {
 
+	if ( ! current_user_can( 'manage_options' ) ) {
+		return;
+	}
+
 	if ( isset( $_POST['regenerate_points_logs'] ) ) {
 
 		check_admin_referer( 'wordpoints_points_logs_regenerator' );
