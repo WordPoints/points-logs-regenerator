@@ -46,9 +46,9 @@ function wordpoints_points_logs_regenerator_regenerate() {
 /**
  * Add a regenerate button to the points logs screen.
  *
- * @since 1.0.0
+ * @since 1.1.0
  */
-function worpdoints_points_logs_regenerator_form() {
+function wordpoints_points_logs_regenerator_form() {
 
 	if ( ! current_user_can( 'manage_options' ) ) {
 		return;
@@ -75,6 +75,19 @@ function worpdoints_points_logs_regenerator_form() {
 
 	<?php
 }
-add_action( 'wordpoints_admin_points_logs', 'worpdoints_points_logs_regenerator_form' );
+add_action( 'wordpoints_admin_points_logs', 'wordpoints_points_logs_regenerator_form' );
+
+/**
+ * Add a regenerate button to the points logs screen.
+ *
+ * @since 1.0.0
+ * @deprecated 1.1.0 Use wordpoints_points_logs_regenerator_form() instead.
+ */
+function worpdoints_points_logs_regenerator_form() {
+
+	_deprecated_function( __FUNCTION__, '1.1.0', 'wordpoints_points_logs_regenerator_form' );
+
+	wordpoints_points_logs_regenerator_form();
+}
 
 // EOF
