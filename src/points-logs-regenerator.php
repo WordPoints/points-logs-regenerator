@@ -6,7 +6,7 @@
  * Author URI:  http://codesymphony.co/
  * Version:     1.0.0
  * License:     GPLv2+
- * Description: Regenerates your points logs.
+ * Description: Regenerate your points logs using a button at the top of the Points Logs screen.
  * Channel:     wordpoints.org
  * ID:          530
  *
