@@ -7,6 +7,8 @@
  * Version:     1.0.0
  * License:     GPLv2+
  * Description: Regenerates your points logs.
+ * Channel:     wordpoints.org
+ * ID:          530
  *
  * ---------------------------------------------------------------------------------|
  * Copyright 2014-15  J.D. Grimes  (email : jdg@codesymphony.co)
