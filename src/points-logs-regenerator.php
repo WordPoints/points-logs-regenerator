@@ -38,18 +38,9 @@
  */
 function wordpoints_points_logs_regenerator_regenerate() {
 
-	if ( version_compare( WORDPOINTS_VERSION, '1.6.0', '<' ) ) {
+	$logs_query = new WordPoints_Points_Logs_Query();
 
-		$logs_query = new WordPoints_Points_Logs_Query( array( 'fields' => 'id' ) );
-		$logs = $logs_query->get( 'col' );
-
-	} else {
-
-		$logs_query = new WordPoints_Points_Logs_Query();
-		$logs = $logs_query->get();
-	}
-
-	wordpoints_regenerate_points_logs( $logs );
+	wordpoints_regenerate_points_logs( $logs_query->get() );
 }
 
 /**
