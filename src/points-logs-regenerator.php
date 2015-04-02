@@ -7,6 +7,8 @@
  * Version:     1.0.0
  * License:     GPLv2+
  * Description: Regenerate your points logs using a button at the top of the Points Logs screen.
+ * Text Domain: wordpoints-points-logs-regenerator
+ * Domain Path: /languages
  * Channel:     wordpoints.org
  * ID:          530
  *
