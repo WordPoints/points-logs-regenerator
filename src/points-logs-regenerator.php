@@ -64,7 +64,9 @@ function wordpoints_points_logs_regenerator_form() {
 
 		wordpoints_points_logs_regenerator_regenerate();
 
-		wordpoints_show_admin_message( __( 'The points logs were regenerated.' ) );
+		wordpoints_show_admin_message(
+			__( 'The points logs were regenerated.', 'wordpoints-points-logs-regenerator' )
+		);
 	}
 
 	?>
@@ -81,7 +83,7 @@ function wordpoints_points_logs_regenerator_form() {
 	<div id="wordpoints-points-logs-regenerator">
 		<form method="post">
 			<?php wp_nonce_field( 'wordpoints_points_logs_regenerator' ); ?>
-			<?php submit_button( __( 'Regenerate Points Logs' ), 'secondary', 'regenerate_points_logs', false ); ?>
+			<?php submit_button( __( 'Regenerate Points Logs', 'wordpoints-points-logs-regenerator' ), 'secondary', 'regenerate_points_logs', false ); ?>
 		</form>
 	</div>
 
