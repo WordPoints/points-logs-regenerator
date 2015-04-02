@@ -67,13 +67,21 @@ function wordpoints_points_logs_regenerator_form() {
 
 	?>
 
-	<br />
-	<form method="post">
-		<?php wp_nonce_field( 'wordpoints_points_logs_regenerator' ); ?>
-		<?php submit_button( __( 'Regenerate Points Logs' ), 'primary', 'regenerate_points_logs', false ); ?>
-		<?php esc_html_e( 'Regenerating your logs may take a few moments depending on the number of them.' ); ?>
-	</form>
-	<br />
+	<style>
+		@media screen and (min-width: 550px) {
+			#wordpoints-points-logs-regenerator {
+				float: right;
+				margin-top: -75px;
+			}
+		}
+	</style>
+
+	<div id="wordpoints-points-logs-regenerator">
+		<form method="post">
+			<?php wp_nonce_field( 'wordpoints_points_logs_regenerator' ); ?>
+			<?php submit_button( __( 'Regenerate Points Logs' ), 'secondary', 'regenerate_points_logs', false ); ?>
+		</form>
+	</div>
 
 	<?php
 }
