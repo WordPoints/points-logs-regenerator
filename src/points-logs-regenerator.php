@@ -9,7 +9,7 @@
  * Description: Regenerates your points logs.
  *
  * ---------------------------------------------------------------------------------|
- * Copyright 2014  J.D. Grimes  (email : jdg@codesymphony.co)
+ * Copyright 2014-15  J.D. Grimes  (email : jdg@codesymphony.co)
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License, version 2 or later, as
