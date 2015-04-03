@@ -2,9 +2,9 @@
 # This file is distributed under the same license as the WordPoints Points Logs Regenerator package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WordPoints Points Logs Regenerator 1.0.0\n"
+"Project-Id-Version: WordPoints Points Logs Regenerator 1.1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-04-02 21:47:20+00:00\n"
+"POT-Creation-Date: 2015-04-03 19:17:46+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -12,11 +12,11 @@ msgstr ""
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 
-#: points-logs-regenerator.php:68
+#: points-logs-regenerator.php:69
 msgid "The points logs were regenerated."
 msgstr ""
 
-#: points-logs-regenerator.php:86
+#: points-logs-regenerator.php:87
 msgid "Regenerate Points Logs"
 msgstr ""
 
@@ -36,4 +36,8 @@ msgstr ""
 
 #. Module Name of the module
 msgid "Points Logs Regenerator"
+msgstr ""
+
+#. Module URI of the module
+msgid "https://wordpoints.org/modules/points-logs-regenerator/"
 msgstr ""
