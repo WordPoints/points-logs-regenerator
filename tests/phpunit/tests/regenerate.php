@@ -174,7 +174,6 @@ class WordPoints_Points_Logs_Regenerator_Test extends WordPoints_Points_UnitTest
 			, $xpath->query( '//div[@class = "updated" and @id = "message"]' )->length
 		);
 
-
 		$this->assertLogsNotRegenerated();
 	}
 
