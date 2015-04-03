@@ -2,6 +2,7 @@
 
 /**
  * Module Name: Points Logs Regenerator
+ * Module URI:  https://wordpoints.org/modules/points-logs-regenerator/
  * Author:      J.D. Grimes
  * Author URI:  http://codesymphony.co/
  * Version:     1.0.0
