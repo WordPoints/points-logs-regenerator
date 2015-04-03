@@ -2,14 +2,19 @@
 
 /**
  * Module Name: Points Logs Regenerator
+ * Module URI:  https://wordpoints.org/modules/points-logs-regenerator/
  * Author:      J.D. Grimes
  * Author URI:  http://codesymphony.co/
- * Version:     1.0.0
+ * Version:     1.1.0
  * License:     GPLv2+
- * Description: Regenerates your points logs.
+ * Description: Regenerate your points logs using a button at the top of the Points Logs screen.
+ * Text Domain: wordpoints-points-logs-regenerator
+ * Domain Path: /languages
+ * Channel:     wordpoints.org
+ * ID:          530
  *
  * ---------------------------------------------------------------------------------|
- * Copyright 2014  J.D. Grimes  (email : jdg@codesymphony.co)
+ * Copyright 2014-15  J.D. Grimes  (email : jdg@codesymphony.co)
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License, version 2 or later, as
@@ -26,7 +31,7 @@
  * ---------------------------------------------------------------------------------|
  *
  * @package WordPoints_Points_Logs_Regenerator
- * @version 1.0.0
+ * @version 1.1.0
  * @author  J.D. Grimes <jdg@codesymphony.co>
  * @license GPLv2+
  */
@@ -38,26 +43,17 @@
  */
 function wordpoints_points_logs_regenerator_regenerate() {
 
-	if ( version_compare( WORDPOINTS_VERSION, '1.6.0', '<' ) ) {
+	$logs_query = new WordPoints_Points_Logs_Query();
 
-		$logs_query = new WordPoints_Points_Logs_Query( array( 'fields' => 'id' ) );
-		$logs = $logs_query->get( 'col' );
-
-	} else {
-
-		$logs_query = new WordPoints_Points_Logs_Query();
-		$logs = $logs_query->get();
-	}
-
-	wordpoints_regenerate_points_logs( $logs );
+	wordpoints_regenerate_points_logs( $logs_query->get() );
 }
 
 /**
  * Add a regenerate button to the points logs screen.
  *
- * @since 1.0.0
+ * @since 1.1.0
  */
-function worpdoints_points_logs_regenerator_form() {
+function wordpoints_points_logs_regenerator_form() {
 
 	if ( ! current_user_can( 'manage_options' ) ) {
 		return;
@@ -69,21 +65,44 @@ function worpdoints_points_logs_regenerator_form() {
 
 		wordpoints_points_logs_regenerator_regenerate();
 
-		wordpoints_show_admin_message( __( 'The points logs were regenerated.' ) );
+		wordpoints_show_admin_message(
+			__( 'The points logs were regenerated.', 'wordpoints-points-logs-regenerator' )
+		);
 	}
 
 	?>
 
-	<br />
-	<form method="post">
-		<?php wp_nonce_field( 'wordpoints_points_logs_regenerator' ); ?>
-		<?php submit_button( __( 'Regenerate Points Logs' ), 'primary', 'regenerate_points_logs', false ); ?>
-		<?php esc_html_e( 'Regenerating your logs may take a few moments depending on the number of them.' ); ?>
-	</form>
-	<br />
+	<style>
+		@media screen and (min-width: 550px) {
+			#wordpoints-points-logs-regenerator {
+				float: right;
+				margin-top: -75px;
+			}
+		}
+	</style>
+
+	<div id="wordpoints-points-logs-regenerator">
+		<form method="post">
+			<?php wp_nonce_field( 'wordpoints_points_logs_regenerator' ); ?>
+			<?php submit_button( __( 'Regenerate Points Logs', 'wordpoints-points-logs-regenerator' ), 'secondary', 'regenerate_points_logs', false ); ?>
+		</form>
+	</div>
 
 	<?php
 }
-add_action( 'wordpoints_admin_points_logs', 'worpdoints_points_logs_regenerator_form' );
+add_action( 'wordpoints_admin_points_logs', 'wordpoints_points_logs_regenerator_form' );
+
+/**
+ * Add a regenerate button to the points logs screen.
+ *
+ * @since 1.0.0
+ * @deprecated 1.1.0 Use wordpoints_points_logs_regenerator_form() instead.
+ */
+function worpdoints_points_logs_regenerator_form() {
+
+	_deprecated_function( __FUNCTION__, '1.1.0', 'wordpoints_points_logs_regenerator_form' );
+
+	wordpoints_points_logs_regenerator_form();
+}
 
 // EOF
