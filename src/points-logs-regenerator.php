@@ -5,7 +5,7 @@
  * Module URI:  https://wordpoints.org/modules/points-logs-regenerator/
  * Author:      J.D. Grimes
  * Author URI:  http://codesymphony.co/
- * Version:     1.0.0
+ * Version:     1.1.0
  * License:     GPLv2+
  * Description: Regenerate your points logs using a button at the top of the Points Logs screen.
  * Text Domain: wordpoints-points-logs-regenerator
@@ -31,7 +31,7 @@
  * ---------------------------------------------------------------------------------|
  *
  * @package WordPoints_Points_Logs_Regenerator
- * @version 1.0.0
+ * @version 1.1.0
  * @author  J.D. Grimes <jdg@codesymphony.co>
  * @license GPLv2+
  */
