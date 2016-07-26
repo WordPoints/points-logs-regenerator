@@ -138,7 +138,9 @@ class WordPoints_Points_Logs_Regenerator_Test extends WordPoints_Points_UnitTest
 
 		try {
 			wordpoints_points_logs_regenerator_form();
-		} catch ( WPDieException $e ) {}
+		} catch ( WPDieException $e ) {
+			// Do nothing.
+		}
 
 		$this->assertTrue( isset( $e ) );
 
