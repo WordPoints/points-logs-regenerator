@@ -91,13 +91,7 @@ class WordPoints_Points_Logs_Regenerator_Test extends WordPoints_Points_UnitTest
 		wordpoints_points_logs_regenerator_form();
 		$form = ob_get_clean();
 
-		$document = new DOMDocument;
-		$document->loadHTML( $form );
-		$xpath = new DOMXPath( $document );
-		$this->assertEquals(
-			1
-			, $xpath->query( '//div[@class = "updated" and @id = "message"]' )->length
-		);
+		$this->assertWordPointsAdminNotice( $form );
 
 		$query = new WordPoints_Points_Logs_Query();
 		$logs = $query->get();
@@ -144,7 +138,9 @@ class WordPoints_Points_Logs_Regenerator_Test extends WordPoints_Points_UnitTest
 
 		try {
 			wordpoints_points_logs_regenerator_form();
-		} catch ( WPDieException $e ) {}
+		} catch ( WPDieException $e ) {
+			// Do nothing.
+		}
 
 		$this->assertTrue( isset( $e ) );
 
@@ -171,7 +167,13 @@ class WordPoints_Points_Logs_Regenerator_Test extends WordPoints_Points_UnitTest
 		$xpath = new DOMXPath( $document );
 		$this->assertEquals(
 			0
-			, $xpath->query( '//div[@class = "updated" and @id = "message"]' )->length
+			, $xpath->query( '//div[contains(@class, "notice")]' )->length
+		);
+
+		// Back-compat.
+		$this->assertEquals(
+			0
+			, $xpath->query( '//div[@id = "message"]' )->length
 		);
 
 		$this->assertLogsNotRegenerated();
