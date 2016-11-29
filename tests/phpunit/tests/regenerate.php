@@ -19,6 +19,8 @@ class WordPoints_Points_Logs_Regenerator_Test extends WordPoints_Points_UnitTest
 	 */
 	public static function setUpBeforeClass() {
 
+		parent::setUpBeforeClass();
+
 		/**
 		 * The admin-side functions from WordPoints.
 		 *
@@ -140,6 +142,7 @@ class WordPoints_Points_Logs_Regenerator_Test extends WordPoints_Points_UnitTest
 			wordpoints_points_logs_regenerator_form();
 		} catch ( WPDieException $e ) {
 			// Do nothing.
+			unset( $that );
 		}
 
 		$this->assertTrue( isset( $e ) );
