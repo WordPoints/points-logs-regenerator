@@ -10,6 +10,7 @@
  * Description: Regenerate your points logs using a button at the top of the Points Logs screen.
  * Text Domain: wordpoints-points-logs-regenerator
  * Domain Path: /languages
+ * Namespace:   Points_Logs_Regenerator
  * Channel:     wordpoints.org
  * ID:          530
  *
