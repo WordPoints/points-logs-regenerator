@@ -15,7 +15,7 @@
  * ID:          530
  *
  * ---------------------------------------------------------------------------------|
- * Copyright 2014-15  J.D. Grimes  (email : jdg@codesymphony.co)
+ * Copyright 2014-16  J.D. Grimes  (email : jdg@codesymphony.co)
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License, version 2 or later, as
@@ -35,6 +35,7 @@
  * @version 1.1.0
  * @author  J.D. Grimes <jdg@codesymphony.co>
  * @license GPLv2+
+ * @copyright 2014-16 J.D. Grimes
  */
 
 /**
