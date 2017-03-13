@@ -12,7 +12,8 @@
  *
  * @since 1.1.0
  */
-class WordPoints_Points_Logs_Regenerator_Test extends WordPoints_Points_UnitTestCase {
+class WordPoints_Points_Logs_Regenerator_Test
+	extends WordPoints_PHPUnit_TestCase_Points {
 
 	/**
 	 * @since 1.1.0
@@ -38,7 +39,7 @@ class WordPoints_Points_Logs_Regenerator_Test extends WordPoints_Points_UnitTest
 
 		add_filter( 'wordpoints_points_log-test', array( $this, 'log_text_hello_world' ) );
 
-		$this->factory->wordpoints_points_log->create_many(
+		$this->factory->wordpoints->points_log->create_many(
 			2
 			, array( 'log_type' => 'test' )
 		);
@@ -47,8 +48,8 @@ class WordPoints_Points_Logs_Regenerator_Test extends WordPoints_Points_UnitTest
 		$logs = $query->get();
 
 		$this->assertCount( 2, $logs );
-		$this->assertEquals( 'Hello world!', $logs[0]->text );
-		$this->assertEquals( 'Hello world!', $logs[1]->text );
+		$this->assertSame( 'Hello world!', $logs[0]->text );
+		$this->assertSame( 'Hello world!', $logs[1]->text );
 
 		remove_filter( 'wordpoints_points_log-test', array( $this, 'log_text_hello_world' ) );
 		add_filter( 'wordpoints_points_log-test', array( $this, 'log_text_hello_tester' ) );
@@ -76,8 +77,8 @@ class WordPoints_Points_Logs_Regenerator_Test extends WordPoints_Points_UnitTest
 		$logs = $query->get();
 
 		$this->assertCount( 2, $logs );
-		$this->assertEquals( 'Hello tester!', $logs[0]->text );
-		$this->assertEquals( 'Hello tester!', $logs[1]->text );
+		$this->assertSame( 'Hello tester!', $logs[0]->text );
+		$this->assertSame( 'Hello tester!', $logs[1]->text );
 	}
 
 	/**
@@ -99,8 +100,8 @@ class WordPoints_Points_Logs_Regenerator_Test extends WordPoints_Points_UnitTest
 		$logs = $query->get();
 
 		$this->assertCount( 2, $logs );
-		$this->assertEquals( 'Hello tester!', $logs[0]->text );
-		$this->assertEquals( 'Hello tester!', $logs[1]->text );
+		$this->assertSame( 'Hello tester!', $logs[0]->text );
+		$this->assertSame( 'Hello tester!', $logs[1]->text );
 	}
 
 	/**
@@ -122,7 +123,7 @@ class WordPoints_Points_Logs_Regenerator_Test extends WordPoints_Points_UnitTest
 		wordpoints_points_logs_regenerator_form();
 		$form = ob_get_clean();
 
-		$this->assertEmpty( $form );
+		$this->assertSame( '', $form );
 
 		$this->assertLogsNotRegenerated();
 	}
@@ -168,13 +169,13 @@ class WordPoints_Points_Logs_Regenerator_Test extends WordPoints_Points_UnitTest
 		$document = new DOMDocument;
 		$document->loadHTML( $form );
 		$xpath = new DOMXPath( $document );
-		$this->assertEquals(
+		$this->assertSame(
 			0
 			, $xpath->query( '//div[contains(@class, "notice")]' )->length
 		);
 
 		// Back-compat.
-		$this->assertEquals(
+		$this->assertSame(
 			0
 			, $xpath->query( '//div[@id = "message"]' )->length
 		);
@@ -200,7 +201,7 @@ class WordPoints_Points_Logs_Regenerator_Test extends WordPoints_Points_UnitTest
 		$document = new DOMDocument;
 		$document->loadHTML( $form );
 		$xpath = new DOMXPath( $document );
-		$this->assertEquals(
+		$this->assertSame(
 			1
 			, $xpath->query( '//form' )->length
 		);
@@ -221,8 +222,8 @@ class WordPoints_Points_Logs_Regenerator_Test extends WordPoints_Points_UnitTest
 		$logs = $query->get();
 
 		$this->assertCount( 2, $logs );
-		$this->assertEquals( 'Hello world!', $logs[0]->text );
-		$this->assertEquals( 'Hello world!', $logs[1]->text );
+		$this->assertSame( 'Hello world!', $logs[0]->text );
+		$this->assertSame( 'Hello world!', $logs[1]->text );
 	}
 
 	/**
