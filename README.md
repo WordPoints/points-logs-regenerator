@@ -1,7 +1,9 @@
-Points Logs Regenerator
+Points Logs Regenerator [![Build Status](https://travis-ci.org/WordPoints/points-logs-regenerator.svg?branch=develop)](https://travis-ci.org/WordPoints/points-logs-regenerator) [![HackerOne Bug Bounty Program](https://img.shields.io/badge/security-HackerOne-blue.svg)](https://hackerone.com/wordpoints)
 =======================
 
 WordPoints module for regenerating the points logs.
+
+You can find its [homepage on WordPoints.org](https://wordpoints.org/modules/points-logs-regenerator/).
 
 WordPoints stores the text of the points logs statically. This has several benefits,
 including reduction in the performance overhead of displaying the logs and making it
