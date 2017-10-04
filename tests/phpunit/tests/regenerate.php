@@ -27,7 +27,7 @@ class WordPoints_Points_Logs_Regenerator_Test
 		 *
 		 * @since 1.1.0
 		 */
-		require_once( WORDPOINTS_DIR . '/admin/admin.php' );
+		require_once WORDPOINTS_DIR . '/admin/admin.php';
 	}
 
 	/**
@@ -166,7 +166,7 @@ class WordPoints_Points_Logs_Regenerator_Test
 		wordpoints_points_logs_regenerator_form();
 		$form = ob_get_clean();
 
-		$document = new DOMDocument;
+		$document = new DOMDocument();
 		$document->loadHTML( $form );
 		$xpath = new DOMXPath( $document );
 		$this->assertSame(
@@ -198,7 +198,7 @@ class WordPoints_Points_Logs_Regenerator_Test
 		worpdoints_points_logs_regenerator_form();
 		$form = ob_get_clean();
 
-		$document = new DOMDocument;
+		$document = new DOMDocument();
 		$document->loadHTML( $form );
 		$xpath = new DOMXPath( $document );
 		$this->assertSame(
