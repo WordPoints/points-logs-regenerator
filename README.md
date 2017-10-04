@@ -1,9 +1,9 @@
 Points Logs Regenerator [![Build Status](https://travis-ci.org/WordPoints/points-logs-regenerator.svg?branch=develop)](https://travis-ci.org/WordPoints/points-logs-regenerator) [![HackerOne Bug Bounty Program](https://img.shields.io/badge/security-HackerOne-blue.svg)](https://hackerone.com/wordpoints)
 =======================
 
-WordPoints module for regenerating the points logs.
+WordPoints extension for regenerating the points logs.
 
-You can find its [homepage on WordPoints.org](https://wordpoints.org/modules/points-logs-regenerator/).
+You can find its [homepage on WordPoints.org](https://wordpoints.org/extensions/points-logs-regenerator/).
 
 WordPoints stores the text of the points logs statically. This has several benefits,
 including reduction in the performance overhead of displaying the logs and making it
@@ -13,7 +13,7 @@ a particular log entry when it thinks this is needed. But sometimes you may want
 trigger the regeneration of the points logs manually, for example, if you have just
 installed a translation.
 
-This module adds a button to the _WordPoints » Points Logs_ administration screen,
+This extension adds a button to the _WordPoints » Points Logs_ administration screen,
 which will cause the points logs to be regenerated when clicked. Note that all of the
 logs for a site will be regenerated at once, not just those of one points type.
 
@@ -23,6 +23,6 @@ circumstances. In the future, the feature may be added to regenerate the logs in
 batches. Until then, it is suggested that you use caution before attempting to
 regenerate more than a few thousand logs at once.
 
-Be aware that this module has not yet been tested on multisite, though it should
+Be aware that this extension has not yet been tested on multisite, though it should
 work. On multisite, the logs of each site on the network would be regenerated
 separately.
