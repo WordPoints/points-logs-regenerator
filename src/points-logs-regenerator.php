@@ -52,6 +52,8 @@ wordpoints_register_extension(
  */
 function wordpoints_points_logs_regenerator_regenerate() {
 
+	wordpoints_prevent_interruptions();
+
 	$logs_query = new WordPoints_Points_Logs_Query();
 
 	wordpoints_regenerate_points_logs( $logs_query->get() );
