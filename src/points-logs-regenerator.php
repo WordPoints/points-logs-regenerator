@@ -4,7 +4,7 @@
  * The extension's main file.
  *
  * ---------------------------------------------------------------------------------|
- * Copyright 2014-16  J.D. Grimes  (email : jdg@codesymphony.co)
+ * Copyright 2014-17  J.D. Grimes  (email : jdg@codesymphony.co)
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License, version 2 or later, as
@@ -21,10 +21,10 @@
  * ---------------------------------------------------------------------------------|
  *
  * @package WordPoints_Points_Logs_Regenerator
- * @version 1.1.0
+ * @version 1.1.1
  * @author  J.D. Grimes <jdg@codesymphony.co>
  * @license GPLv2+
- * @copyright 2014-16 J.D. Grimes
+ * @copyright 2014-17 J.D. Grimes
  */
 
 wordpoints_register_extension(
@@ -33,7 +33,7 @@ wordpoints_register_extension(
 		Extension URI:  https://wordpoints.org/extensions/points-logs-regenerator/
 		Author:         J.D. Grimes
 		Author URI:     https://codesymphony.co/
-		Version:        1.1.0
+		Version:        1.1.1
 		License:        GPLv2+
 		Description:    Regenerate your points logs using a button at the top of the Points Logs screen.
 		Text Domain:    wordpoints-points-logs-regenerator

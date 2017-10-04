@@ -8,6 +8,22 @@ This project adheres to [Semantic Versioning](http://semver.org/) and [Keep a CH
 
 Nothing documented yet.
 
+## [1.1.1] - 2017-10-04
+
+### Requires
+
+- WordPoints: 2.4+
+
+### Added
+
+- Namespace extension header.
+- This change log.
+
+### Fixed
+
+- Deprecated notices from `Channel`, `Module Name`, and `Module URI` extension headers.
+- The regeneration process being interrupted in the middle. Now `wordpoints_prevent_interruptions()` is called before we start.
+
 ## [1.1.0] - 2015-04-03
 
 ### Requires
@@ -30,5 +46,6 @@ Nothing documented yet.
 - Button on the Points Logs screen to regenerate points logs.
 
 [unreleased]: https://github.com/WordPoints/points-logs-regenerator/compare/master...HEAD
+[1.1.1]: https://github.com/WordPoints/points-logs-regenerator/compare/1.1.0...1.1.1
 [1.1.0]: https://github.com/WordPoints/points-logs-regenerator/compare/1.0.0...1.1.0
 [1.0.0]: https://github.com/WordPoints/points-logs-regenerator/compare/...1.0.0
