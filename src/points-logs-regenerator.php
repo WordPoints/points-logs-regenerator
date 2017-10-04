@@ -1,20 +1,10 @@
 <?php
 
 /**
- * Module Name: Points Logs Regenerator
- * Module URI:  https://wordpoints.org/modules/points-logs-regenerator/
- * Author:      J.D. Grimes
- * Author URI:  http://codesymphony.co/
- * Version:     1.1.0
- * License:     GPLv2+
- * Description: Regenerate your points logs using a button at the top of the Points Logs screen.
- * Text Domain: wordpoints-points-logs-regenerator
- * Domain Path: /languages
- * Channel:     wordpoints.org
- * ID:          530
+ * The extension's main file.
  *
  * ---------------------------------------------------------------------------------|
- * Copyright 2014-15  J.D. Grimes  (email : jdg@codesymphony.co)
+ * Copyright 2014-17  J.D. Grimes  (email : jdg@codesymphony.co)
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License, version 2 or later, as
@@ -31,10 +21,29 @@
  * ---------------------------------------------------------------------------------|
  *
  * @package WordPoints_Points_Logs_Regenerator
- * @version 1.1.0
+ * @version 1.1.1
  * @author  J.D. Grimes <jdg@codesymphony.co>
  * @license GPLv2+
+ * @copyright 2014-17 J.D. Grimes
  */
+
+wordpoints_register_extension(
+	'
+		Extension Name: Points Logs Regenerator
+		Extension URI:  https://wordpoints.org/extensions/points-logs-regenerator/
+		Author:         J.D. Grimes
+		Author URI:     https://codesymphony.co/
+		Version:        1.1.1
+		License:        GPLv2+
+		Description:    Regenerate your points logs using a button at the top of the Points Logs screen.
+		Text Domain:    wordpoints-points-logs-regenerator
+		Domain Path:    /languages
+		Namespace:      Points_Logs_Regenerator
+		Server:         wordpoints.org
+		ID:             530
+	'
+	, __FILE__
+);
 
 /**
  * Regenerate the points logs.
@@ -42,6 +51,8 @@
  * @since 1.0.0
  */
 function wordpoints_points_logs_regenerator_regenerate() {
+
+	wordpoints_prevent_interruptions();
 
 	$logs_query = new WordPoints_Points_Logs_Query();
 

@@ -12,19 +12,22 @@
  *
  * @since 1.1.0
  */
-class WordPoints_Points_Logs_Regenerator_Test extends WordPoints_Points_UnitTestCase {
+class WordPoints_Points_Logs_Regenerator_Test
+	extends WordPoints_PHPUnit_TestCase_Points {
 
 	/**
 	 * @since 1.1.0
 	 */
 	public static function setUpBeforeClass() {
 
+		parent::setUpBeforeClass();
+
 		/**
 		 * The admin-side functions from WordPoints.
 		 *
 		 * @since 1.1.0
 		 */
-		require_once( WORDPOINTS_DIR . '/admin/admin.php' );
+		require_once WORDPOINTS_DIR . '/admin/admin.php';
 	}
 
 	/**
@@ -36,7 +39,7 @@ class WordPoints_Points_Logs_Regenerator_Test extends WordPoints_Points_UnitTest
 
 		add_filter( 'wordpoints_points_log-test', array( $this, 'log_text_hello_world' ) );
 
-		$this->factory->wordpoints_points_log->create_many(
+		$this->factory->wordpoints->points_log->create_many(
 			2
 			, array( 'log_type' => 'test' )
 		);
@@ -45,8 +48,8 @@ class WordPoints_Points_Logs_Regenerator_Test extends WordPoints_Points_UnitTest
 		$logs = $query->get();
 
 		$this->assertCount( 2, $logs );
-		$this->assertEquals( 'Hello world!', $logs[0]->text );
-		$this->assertEquals( 'Hello world!', $logs[1]->text );
+		$this->assertSame( 'Hello world!', $logs[0]->text );
+		$this->assertSame( 'Hello world!', $logs[1]->text );
 
 		remove_filter( 'wordpoints_points_log-test', array( $this, 'log_text_hello_world' ) );
 		add_filter( 'wordpoints_points_log-test', array( $this, 'log_text_hello_tester' ) );
@@ -74,8 +77,8 @@ class WordPoints_Points_Logs_Regenerator_Test extends WordPoints_Points_UnitTest
 		$logs = $query->get();
 
 		$this->assertCount( 2, $logs );
-		$this->assertEquals( 'Hello tester!', $logs[0]->text );
-		$this->assertEquals( 'Hello tester!', $logs[1]->text );
+		$this->assertSame( 'Hello tester!', $logs[0]->text );
+		$this->assertSame( 'Hello tester!', $logs[1]->text );
 	}
 
 	/**
@@ -91,20 +94,14 @@ class WordPoints_Points_Logs_Regenerator_Test extends WordPoints_Points_UnitTest
 		wordpoints_points_logs_regenerator_form();
 		$form = ob_get_clean();
 
-		$document = new DOMDocument;
-		$document->loadHTML( $form );
-		$xpath = new DOMXPath( $document );
-		$this->assertEquals(
-			1
-			, $xpath->query( '//div[@class = "updated" and @id = "message"]' )->length
-		);
+		$this->assertWordPointsAdminNotice( $form );
 
 		$query = new WordPoints_Points_Logs_Query();
 		$logs = $query->get();
 
 		$this->assertCount( 2, $logs );
-		$this->assertEquals( 'Hello tester!', $logs[0]->text );
-		$this->assertEquals( 'Hello tester!', $logs[1]->text );
+		$this->assertSame( 'Hello tester!', $logs[0]->text );
+		$this->assertSame( 'Hello tester!', $logs[1]->text );
 	}
 
 	/**
@@ -126,7 +123,7 @@ class WordPoints_Points_Logs_Regenerator_Test extends WordPoints_Points_UnitTest
 		wordpoints_points_logs_regenerator_form();
 		$form = ob_get_clean();
 
-		$this->assertEmpty( $form );
+		$this->assertSame( '', $form );
 
 		$this->assertLogsNotRegenerated();
 	}
@@ -144,7 +141,10 @@ class WordPoints_Points_Logs_Regenerator_Test extends WordPoints_Points_UnitTest
 
 		try {
 			wordpoints_points_logs_regenerator_form();
-		} catch ( WPDieException $e ) {}
+		} catch ( WPDieException $e ) {
+			// Do nothing.
+			unset( $that );
+		}
 
 		$this->assertTrue( isset( $e ) );
 
@@ -166,12 +166,18 @@ class WordPoints_Points_Logs_Regenerator_Test extends WordPoints_Points_UnitTest
 		wordpoints_points_logs_regenerator_form();
 		$form = ob_get_clean();
 
-		$document = new DOMDocument;
+		$document = new DOMDocument();
 		$document->loadHTML( $form );
 		$xpath = new DOMXPath( $document );
-		$this->assertEquals(
+		$this->assertSame(
 			0
-			, $xpath->query( '//div[@class = "updated" and @id = "message"]' )->length
+			, $xpath->query( '//div[contains(@class, "notice")]' )->length
+		);
+
+		// Back-compat.
+		$this->assertSame(
+			0
+			, $xpath->query( '//div[@id = "message"]' )->length
 		);
 
 		$this->assertLogsNotRegenerated();
@@ -192,10 +198,10 @@ class WordPoints_Points_Logs_Regenerator_Test extends WordPoints_Points_UnitTest
 		worpdoints_points_logs_regenerator_form();
 		$form = ob_get_clean();
 
-		$document = new DOMDocument;
+		$document = new DOMDocument();
 		$document->loadHTML( $form );
 		$xpath = new DOMXPath( $document );
-		$this->assertEquals(
+		$this->assertSame(
 			1
 			, $xpath->query( '//form' )->length
 		);
@@ -216,8 +222,8 @@ class WordPoints_Points_Logs_Regenerator_Test extends WordPoints_Points_UnitTest
 		$logs = $query->get();
 
 		$this->assertCount( 2, $logs );
-		$this->assertEquals( 'Hello world!', $logs[0]->text );
-		$this->assertEquals( 'Hello world!', $logs[1]->text );
+		$this->assertSame( 'Hello world!', $logs[0]->text );
+		$this->assertSame( 'Hello world!', $logs[1]->text );
 	}
 
 	/**
